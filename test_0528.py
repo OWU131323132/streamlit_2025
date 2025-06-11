@@ -2,10 +2,6 @@ streamlit
 scikit-learn
 pandas
 numpy
-from sklearn.metrics.pairwise
-import cosine_similarity
-import streamlit as st
-
 
 st.set_page_config(page_title="食材からレシピを探すアプリ", layout="centered")
 
