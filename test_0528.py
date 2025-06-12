@@ -205,10 +205,9 @@ if st.button("レシピを検索！"):
     matched = []
     for recipe in recipes:
         if all(item in recipe["ingredients"] for item in selected_ingredients) and \
-           (meal_type == [] or recipe["meal_type"] in meal_type) and \
-           (meal_purpose == [] or recipe["purpose"] in meal_purpose):
+           (meal_type == [] or any(mt in recipe["meal_type"] for mt in meal_type)) and \
+           (meal_purpose == [] or any(mp in recipe["purpose"] for mp in meal_purpose)):
             matched.append(recipe)
-
 
     if matched:
         for recipe in matched:
