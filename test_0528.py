@@ -233,8 +233,6 @@ if st.button("レシピを検索！"):
          reverse=True
        )[:3]
 
-
-
         if similar_results:
             st.markdown("---")
             st.subheader("👀 似ているレシピ")
