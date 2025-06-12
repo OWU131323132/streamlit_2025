@@ -224,11 +224,15 @@ if st.button("レシピを検索！"):
         tfidf = vectorizer.fit_transform([selected_text] + recipe_texts)
         cosine_sim = cosine_similarity(tfidf[0:1], tfidf[1:])[0]
 
+        matched_names = [r["name"] for r in matched]
+
         similar_results = sorted(
-        [(recipes[i], score) for i, score in enumerate(cosine_sim) if score > 0],  # ← ← ←ここ修正
-        key=lambda x: x[1],
-        reverse=True
-        )[:3]
+         [(recipes[i], score) for i, score in enumerate(cosine_sim)
+          if recipes[i]["name"] not in matched_names],
+         key=lambda x: x[1],
+         reverse=True
+       )[:3]
+
 
 
         if similar_results:
