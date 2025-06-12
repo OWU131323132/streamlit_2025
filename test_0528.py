@@ -225,10 +225,11 @@ if st.button("レシピを検索！"):
         cosine_sim = cosine_similarity(tfidf[0:1], tfidf[1:])[0]
 
         similar_results = sorted(
-            [(recipes[i], score) for i, score in enumerate(cosine_sim) if score > 0 and recipes[i] not in matched],
-            key=lambda x: x[1],
-            reverse=True
+        [(recipes[i], score) for i, score in enumerate(cosine_sim) if score > 0],  # ← ← ←ここ修正
+        key=lambda x: x[1],
+        reverse=True
         )[:3]
+
 
         if similar_results:
             st.markdown("---")
